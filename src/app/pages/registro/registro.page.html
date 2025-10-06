@@ -1,0 +1,171 @@
+<ion-content class="registro-content">
+  <ion-grid>
+    <ion-row>
+      <!-- Lado izquierdo: Formulario -->
+      <ion-col size-md="6" size="12" class="form-side">
+        <h2>Regístrate</h2>
+
+        <div *ngIf="currentStep === 1">
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input [(ngModel)]="nombre" placeholder="Katerin"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Apellido</ion-label>
+            <ion-input [(ngModel)]="apellido" placeholder="Guerrero"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Tipo de Identificación</ion-label>
+            <ion-input [(ngModel)]="tipoId" placeholder="CC"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Número de Identificación</ion-label>
+            <ion-input [(ngModel)]="numId" placeholder="123456789"></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" (click)="nextStep()">Siguiente paso</ion-button>
+        </div>
+
+        <div *ngIf="currentStep === 2">
+                    <!-- País -->
+            <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">País</ion-label>
+            <ion-select
+
+                [(ngModel)]="pais"
+
+                [interface]="isDesktop ? 'popover' : 'action-sheet'"
+
+                [interfaceOptions]="selectOpts"
+
+                (ionChange)="onCountryChange($event)"
+            >
+            <ion-select-option *ngFor="let country of countries" [value]="country">
+
+                  {{ country }}
+            </ion-select-option>
+            </ion-select>
+            </ion-item>
+            
+            <!-- Ciudad/Región -->
+            <ion-item lines="none" class="form-item" *ngIf="pais === 'Colombia'">
+            <ion-label position="stacked">Ciudad</ion-label>
+            <ion-select
+
+                [(ngModel)]="region"
+
+                [interface]="isDesktop ? 'popover' : 'action-sheet'"
+
+                [interfaceOptions]="selectOpts"
+
+                (ionChange)="loadMunicipios($event)"
+            >
+            <ion-select-option *ngFor="let dep of departments" [value]="dep.name">
+
+                  {{ dep.name }}
+            </ion-select-option>
+            </ion-select>
+            </ion-item>
+            
+            <!-- Municipio -->
+            <ion-item lines="none" class="form-item" *ngIf="pais === 'Colombia'">
+            <ion-label position="stacked">Municipio</ion-label>
+            <ion-select
+
+                [(ngModel)]="municipio"
+
+                [interface]="isDesktop ? 'popover' : 'action-sheet'"
+
+                [interfaceOptions]="selectOpts"
+            >
+            <ion-select-option *ngFor="let mun of currentMunicipios" [value]="mun">
+
+                  {{ mun }}
+            </ion-select-option>
+            </ion-select>
+            </ion-item>
+
+
+          <ion-button expand="block" (click)="nextStep()">Siguiente paso</ion-button>
+        </div>
+
+        <div *ngIf="currentStep === 3">
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Correo</ion-label>
+            <ion-input type="email" [(ngModel)]="correo" placeholder="example@user.com"></ion-input>
+          </ion-item>
+
+          <!-- Contraseña -->
+          <ion-item lines="none" class="form-item with-eye">
+          <ion-label position="stacked">Contraseña</ion-label>
+          
+            <ion-input
+              [type]="passType"
+              [(ngModel)]="contrasena"
+              placeholder="••••••••">
+          </ion-input>
+          
+            <button type="button" class="eye-btn" (click)="togglePass()" aria-label="Mostrar u ocultar contraseña">
+          <ion-icon [name]="showPass ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </button>
+          </ion-item>
+          
+          <!-- Confirmar contraseña -->
+          <ion-item lines="none" class="form-item with-eye">
+          <ion-label position="stacked">Confirmar Contraseña</ion-label>
+          
+            <ion-input
+              [type]="passConfirmType"
+              [(ngModel)]="confirmContrasena"
+              placeholder="••••••••">
+          </ion-input>
+          
+            <button type="button" class="eye-btn" (click)="togglePassConfirm()" aria-label="Mostrar u ocultar confirmación">
+          <ion-icon [name]="showPassConfirm ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+          </button>
+          </ion-item>
+
+          <ion-item lines="none" class="form-item">
+            <ion-checkbox [(ngModel)]="acceptTerms"></ion-checkbox>
+            <ion-label class="checkbox">Acepto y he leído los términos y condiciones</ion-label>
+          </ion-item>
+
+          <ion-button expand="block" (click)="register()">Regístrate como Usuario</ion-button>
+        </div>
+      </ion-col>
+
+      <!-- Lado derecho: Imagen / Mensaje -->
+      <ion-col size-md="6" size="12" class="image-side">
+        <ng-container *ngIf="currentStep !== 3; else thirdStepContent">
+          <h3>¡Dale el toque a tu cuenta!</h3>
+          <p>
+            Sabemos que cada uno es único, como tú.  
+            Crea un perfil que te identifique y comienza tu aventura.
+          </p>
+          <img src="assets/images/register-illustration.png" alt="Registro" />
+        </ng-container>
+
+        <ng-template #thirdStepContent>
+          <h3>¡Comencemos esta aventura!</h3>
+          <p>
+            Es un gusto darte la bienvenida a nuestra comunidad. Ingresa tu correo electrónico y crea una contraseña segura para iniciar sesión.
+          </p>
+          <img class="mail-illustration" src="assets/images/mail-illustration.png" alt="Registro" />
+        </ng-template>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="progress-row">
+      <ion-col size="12">
+        <div class="progress-dots">
+          <span [class.active]="currentStep === 1"></span>
+          <span [class.active]="currentStep === 2"></span>
+          <span [class.active]="currentStep === 3"></span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

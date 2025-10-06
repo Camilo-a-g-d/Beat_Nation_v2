@@ -1,0 +1,237 @@
+/* ============================= */
+/* Estilos Login */
+/* ============================= */
+
+/* Quita paddings por defecto y define el fondo */
+ion-content.login-container {
+  --background: transparent !important;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  background: linear-gradient(135deg, #bbdefb, #f8e1f4, #ffe9d6);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* 💡 Centro absoluto del contenido interno de ion-content */
+ion-content.login-container::part(scroll) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* asegura centrado vertical en todos los navegadores */
+}
+
+/* Opcional: un pequeño margen para que no pegue a los bordes en móviles */
+.login-card {
+  margin: 16px;
+}
+
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card principal (contenedor del login) */
+.login-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 90%;
+  max-width: 950px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* ============================= */
+/* Columna izquierda (formulario) */
+.login-left {
+  
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-left label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.login-left input {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: white;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+
+.forgot-password {
+  font-size: 0.85rem;
+  color: #f06292;
+  text-decoration: none;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Botón principal */
+.btn-primary {
+  background: linear-gradient(135deg, #255ff1, #5dadec); /* ✅ punto y coma */
+  color: #fff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  width: 100%; /* 👉 opcional: que ocupe todo el ancho */
+}
+
+/* Hover con más intensidad */
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e4dd8, #4ca6e0);
+  transform: translateY(-2px); /* pequeño efecto flotante */
+  box-shadow: 0 4px 12px rgba(37, 95, 241, 0.3);
+}
+
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: black;
+  margin: 1rem 0;
+}
+
+/* Botón Google */
+.btn-google {
+  background: #fff;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  transition: background 0.3s ease;
+}
+
+.btn-google:hover {
+  background: #f5f5f5;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================= */
+/* Columna derecha (bienvenida) */
+.login-right {
+  flex: 1;
+  padding: 2rem;
+  background-image: url("/assets/images/fondo.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-right h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.login-right .highlight {
+  color: #1565c0;
+  font-size: 1.8rem;  
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.login-img {
+  max-width: 150px;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.welcome-text {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  text-align: justify;
+}
+
+.register-text {
+  font-size: 0.9rem;
+}
+
+.register-text a {
+  color: #f06292;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* Responsive */
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    padding: 1.5rem;
+  }
+
+  .login-right {
+    text-align: center;
+  }
+
+  .login-img {
+    max-width: 100px;
+  }
+}

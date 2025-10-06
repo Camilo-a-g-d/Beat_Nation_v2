@@ -1,0 +1,132 @@
+<ion-content class="onboarding-slides">
+  <div class="slide" *ngIf="currentSlide === 0">
+    <div class="slide-content glass-card">
+
+    <!-- Flecha arriba derecha -->
+    <div class="card-header">
+      <ion-button fill="clear" class="next-btn" (click)="nextSlide()">
+        <img src="assets/images/boton.png" alt="Siguiente" class="btn-img" />
+      </ion-button>
+    </div>
+
+      <!-- Contenido central -->
+      <div class="slide-body">
+        <div class="slide-left">
+          <img src="assets/images/welcome.png" alt="Welcome" class="slide-img">
+        </div>
+
+        <div class="slide-right">
+          <h1>👋</h1>
+          <h2>¡Bienvenido a <span class="highlight">BeatNation</span>!</h2>
+          <p class="dots">● ○ ○ ○</p>
+        </div>
+      </div>
+
+      <!-- Botón Saltar abajo -->
+      <div class="card-footer">
+        <a class="skip" (click)="skip()">Saltar</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="slide slide-2" *ngIf="currentSlide === 1">
+  <div class="slide-content glass-card">
+
+    <!-- Flecha arriba -->
+    <div class="card-header">
+      <ion-button fill="clear" class="next-btn" (click)="nextSlide()">
+        <img src="assets/images/boton.png" alt="Siguiente" class="btn-img" />
+      </ion-button>
+    </div>
+
+    <!-- Contenido central -->
+    <div class="slide-body">
+      <!-- Imagen -->
+      <div class="slide-left">
+        <img src="assets/images/dos.png" alt="Content" class="slide-img">
+      </div>
+
+      <!-- Texto -->
+      <div class="slide-right">
+        <h2>
+          Los mejores contenidos de tus 
+          <span class="highlight">artistas favoritos</span>, aquí en un solo lugar.
+        </h2>
+        <p class="dots">○ ● ○ ○</p>
+      </div>
+    </div>
+
+    <!-- Botón Saltar abajo -->
+    <div class="card-footer">
+      <a class="skip" (click)="skip()">Saltar</a>
+    </div>
+
+  </div>
+</div>
+<div class="slide slide-3" *ngIf="currentSlide === 2">
+  <div class="slide-content glass-card">
+
+    <!-- Flecha arriba derecha -->
+    <div class="card-header">
+      <ion-button fill="clear" class="next-btn" (click)="nextSlide()">
+        <img src="assets/images/boton.png" alt="Siguiente" class="btn-img" />
+      </ion-button>
+    </div>
+
+    <!-- Contenido central -->
+    <div class="slide-body">
+      <!-- Imagen izquierda -->
+      <div class="slide-left">
+        <img src="assets/images/tres.png" alt="Content" class="slide-img">
+      </div>
+
+      <!-- Texto derecha -->
+      <div class="slide-right">
+        <h2>
+          <span class="highlight">Tu satisfacción</span> es nuestra <span class="highlight">prioridad número 1.</span>
+        </h2>
+
+        <!-- Dots debajo del texto -->
+        <p class="dots">○ ○ ● ○</p>
+      </div>
+    </div>
+
+    <!-- Footer con Saltar -->
+    <div class="card-footer">
+      <a class="skip" (click)="skip()">Saltar</a>
+    </div>
+
+  </div>
+</div>
+<div class="slide slide-4" *ngIf="currentSlide === 3">
+  <div class="slide-content glass-card">
+
+    <!-- Columna izquierda: imagen -->
+    <div class="slide-left">
+      <img src="assets/images/cuatro.png" alt="Final" class="slide-img">
+    </div>
+
+    <!-- Columna derecha: texto + flecha + dots + skip -->
+    <div class="slide-right">
+      
+      <!-- Flecha arriba derecha -->
+      <div class="card-header">
+        <ion-button fill="clear" class="next-btn" (click)="nextSlide()">
+          <img src="assets/images/boton.png" alt="Siguiente" class="btn-img" />
+        </ion-button>
+      </div>
+
+      <!-- Texto -->
+      <h2>
+        Comencemos esta <span class="highlight" style="font-weight: bold;">aventura contigo</span>, <br>
+        dale al <span class="highlight" style="font-weight: bold;">siguiente botón</span>.
+      </h2>
+
+      <!-- Dots -->
+      <p class="dots">○ ○ ○ ●</p>
+
+    </div>
+  </div>
+</div>
+
+</ion-content>

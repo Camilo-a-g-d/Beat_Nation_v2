@@ -1,0 +1,69 @@
+<ion-content class="login-container">
+  <div class="login-card">
+
+    <!-- Columna izquierda -->
+    <div class="login-left">
+      <h2>Recuperación de Contraseña</h2>
+
+      <label>Ingresa el PIN</label>
+
+      <div class="otp-row">
+        <input
+          #otpInput
+          class="otp-box"
+          [class.filled]="digits[0]"
+          inputmode="numeric"
+          maxlength="1"
+          (input)="onInput($event, 0)"
+          (keydown)="onKeyDown($event, 0)"
+        />
+        <input
+          #otpInput
+          class="otp-box"
+          [class.filled]="digits[1]"
+          inputmode="numeric"
+          maxlength="1"
+          (input)="onInput($event, 1)"
+          (keydown)="onKeyDown($event, 1)"
+        />
+        <input
+          #otpInput
+          class="otp-box"
+          [class.filled]="digits[2]"
+          inputmode="numeric"
+          maxlength="1"
+          (input)="onInput($event, 2)"
+          (keydown)="onKeyDown($event, 2)"
+        />
+        <input
+          #otpInput
+          class="otp-box"
+          [class.filled]="digits[3]"
+          inputmode="numeric"
+          maxlength="1"
+          (input)="onInput($event, 3)"
+          (keydown)="onKeyDown($event, 3)"
+        />
+      </div>
+
+      <button class="btn-primary" [disabled]="!isComplete" (click)="verifyPin()">
+        Verificar PIN
+      </button>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="login-right">
+      <h2><span class="highlight">¡Ya estás a unos pasos!</span></h2>
+      <p class="subtitle">
+        Ingresa los dígitos del <b>PIN</b> enviados a tu correo.
+        Recuerda revisar SPAM o no deseados.
+      </p>
+
+      <img class="login-img" src="/assets/images/shapes.png" alt="otp" />
+
+      <p class="welcome-text">
+        Por seguridad, el PIN expira en pocos minutos. Si no lo recibiste, intenta nuevamente desde la pantalla anterior.
+      </p>
+    </div>
+  </div>
+</ion-content>

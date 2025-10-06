@@ -1,0 +1,290 @@
+/* ============================= */
+/* Registro – mismo estilo que Login sin cambiar clases */
+/* ============================= */
+
+/* Fondo con gradiente animado y sin paddings del ion-content */
+ion-content.registro-content {
+  --background: transparent !important;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  background: linear-gradient(135deg, #bbdefb, #f8e1f4, #ffe9d6);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* Centrado absoluto del grid dentro del scroll */
+ion-content.registro-content::part(scroll) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Grid contenedor */
+.registro-content ion-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* lo controlamos con rows */
+}
+
+/* “Card” principal con efecto glass en cada fila de contenido */
+.registro-content ion-row {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Fila de progreso: sin glass, centrada y separada */
+.registro-content .progress-row {
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  width: 90%;
+  max-width: 1000px;
+  margin: 1rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================= */
+/* Columna izquierda: formulario */
+.form-side {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-side h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+/* Item “limpio” tipo login */
+.form-item {
+  margin-bottom: 1rem;
+}
+
+/* Ion-item sin líneas y con borde suave */
+.form-item ion-item {
+  --background: transparent;
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --min-height: 0;
+  --highlight-height: 0;
+  --border-color: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 0 0.6rem;
+}
+
+.form-item ion-label {
+  font-size: 1.2rem;
+  margin-top: 2%;
+  color: #555;
+}
+
+/* Inputs y selects */
+.form-item ion-input,
+.form-item ion-select {
+  --background: transparent;
+  --placeholder-color: #999999;
+  --placeholder-opacity: 1;
+  font-size: 0.85rem;
+  padding: 0.8rem 0.4rem;
+  margin-bottom: 4%;
+}
+
+/* Select un poco más alto */
+.form-item ion-select {
+  --padding-top: 0.5rem;
+  --padding-bottom: 0.5rem;
+}
+
+.form-item .checkbox {
+  font-size: 0.68rem;
+  margin-top: 2%;
+  margin-left: -55%;
+  color: #555;
+}
+
+/* Enfoque/focus: sombra suave */
+.form-item ion-item:focus-within {
+  border-color: #9cc7ff;
+  box-shadow: 0 0 0 3px rgba(156, 199, 255, 0.25);
+}
+
+/* Checkbox alineado con el texto */
+.form-side ion-item ion-checkbox {
+  margin-right: 0.5rem;
+}
+
+/* Botón principal con degradado como login */
+.form-side ion-button {
+  --border-radius: 12px;
+  --box-shadow: none;
+  --background: linear-gradient(135deg, #255ff1, #5dadec);
+  --background-activated: linear-gradient(135deg, #1e4dd8, #4ca6e0);
+  --background-focused: linear-gradient(135deg, #1e4dd8, #4ca6e0);
+  --color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+  height: 50px;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-side ion-button.button-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 95, 241, 0.3);
+}
+
+/* ============================= */
+/* Columna derecha: imagen/mensaje */
+.image-side {
+  background-image: url("/assets/images/fondo.png"); /* igual que login */
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.image-side h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1565c0;
+  margin-bottom: 1rem;
+}
+
+.image-side p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+.image-side img {
+  max-width: 45%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+.image-side .mail-illustration {
+  max-width: 75%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+
+/* 👁️ Ojo en inputs (igual que reset) */
+.form-side .form-item.with-eye {
+  position: relative;
+}
+
+.form-side .form-item.with-eye ion-input {
+  /* espacio al final para que no tape el ojo */
+  --padding-end: 3.2rem;
+}
+
+/* Botón redondo blanco con sombra */
+.form-side .eye-btn {
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  transform: translateY(-10%); /* ajusta leve según altura del item */
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Ícono del ojo */
+.form-side .eye-btn ion-icon {
+  font-size: 1.1rem;
+  color: #6b7280; /* gris suave */
+}
+
+/* Hover/active (desktop) */
+@media (hover:hover) {
+  .form-side .eye-btn:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    transform: translateY(-10%) scale(1.03);
+  }
+}
+
+/* ============================= */
+/* Indicadores de progreso */
+.progress-dots {
+  text-align: center;
+  padding: 0.5rem 0 1rem;
+}
+
+.progress-dots span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 0 5px;
+  transition: background 0.2s ease;
+}
+
+.progress-dots span.active {
+  background: #1565c0;
+}
+
+/* ============================= */
+/* Animación de fondo */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================= */
+/* Responsive */
+@media (max-width: 768px) {
+  .registro-content ion-row {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .form-side,
+  .image-side {
+    padding: 1.5rem;
+  }
+
+  .form-side { order: 2; }
+  .image-side { order: 1; }
+
+  .image-side img { max-width: 110px; }
+
+  .progress-dots { padding: 1.2rem 0; }
+  .progress-row { margin-top: 0.5rem; }
+}

@@ -1,0 +1,145 @@
+/* ============================= */
+/*   Importación de Tipografías  */
+/* ============================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* ============================= */
+/*   Estilo Global del Proyecto  */
+/* ============================= */
+body, html, ion-app, ion-content {
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url("/assets/images/fondo.png");
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+ion-content {
+  --background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+
+/* ============================= */
+/*   Estilo Glassmorphism Base   */
+/* ============================= */
+/* Contenedor principal que sí ocupará toda la pantalla */
+.center-container {
+  min-height: 100vh;         /* altura total de la ventana */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* centra vertical y horizontal */
+  text-align: center;
+}
+
+/* Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  padding: 2rem 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 600px;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Imagen dentro del card */
+.glass-card img {
+  width: 80px;
+  height: auto;
+}
+
+/* Texto dentro del card */
+.card-text {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.card-text h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+  color: #000;
+}
+
+.card-text .version {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Subtítulo rosa afuera del card */
+.subtitle-out {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #F06292;
+}
+
+/* ============================= */
+/*   Tipografías y Jerarquía     */
+/* ============================= */
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  color: #000000;
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #F06292;
+}
+
+/* Texto secundario */
+.text-secondary {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #1565C0;
+}
+
+/* ============================= */
+/*   Ajustes Responsivos         */
+/* ============================= */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}

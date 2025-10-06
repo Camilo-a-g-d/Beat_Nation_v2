@@ -1,0 +1,65 @@
+<ion-content class="login-container" [fullscreen]="true">
+  <div class="login-card">
+
+    <!-- Columna izquierda -->
+    <div class="login-left">
+      <h2>Inicia Sesión</h2>
+
+      <!-- Correo -->
+      <label for="email">Correo</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="example_user@gmail.com"
+        [(ngModel)]="email"
+        [disabled]="loading"
+      />
+
+      <!-- Contraseña -->
+      <label for="password">Contraseña</label>
+      <div class="password-row">
+        <input
+          [type]="passType"
+          id="password"
+          placeholder="tu_Contraseña_Aquí"
+          [(ngModel)]="password"
+          [disabled]="loading"
+        />
+      </div>
+
+
+      <a (click)="goToForgot()" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+      <!-- Botón iniciar sesión -->
+      <button class="btn-primary" (click)="onLogin()" [disabled]="loading">
+        {{ loading ? 'Ingresando...' : 'Inicia Sesión' }}
+      </button>
+
+      <!-- Divider opcional -->
+      <div class="divider"></div>
+
+      <!-- Google login (placeholder) -->
+      <button class="btn-google" (click)="loginWithGoogle()" [disabled]="loading">
+        <img src="assets/images/google_icon.png" alt="Google" class="google-icon">
+        Continua Con Google
+      </button>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="login-right">
+      <h2>👋 <span class="highlight">Bienvenidos</span></h2>
+      <p class="subtitle">Es un gusto para nosotros tenerte aquí</p>
+
+      <img src="assets/images/login.png" alt="Welcome" class="login-img">
+
+      <p class="welcome-text">
+        Para todo nuestro equipo es un placer que disfrutes nuestra aplicación, aquí es donde las comunidades artistas y fans se encuentran.
+      </p>
+
+      <p class="register-text">
+        ¿No tienes Cuenta?
+        <a (click)="goToRegister()">Regístrate Aquí</a>
+      </p>
+    </div>
+  </div>
+</ion-content>

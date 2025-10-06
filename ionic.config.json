@@ -1,0 +1,7 @@
+{
+  "name": "w.a.s.p.p",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

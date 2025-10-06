@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+// @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+/*
+=============================
+   Tema de la aplicación
+=============================
+*/
+
+:root {
+  // Colores principales
+  --primary-color: #F15429;
+  --dark-color: #000;
+  --white-color: #FFF;
+  --light-color: #E6E6E6;
+  --ion-font-family: 'Poppins', sans-serif;
+  --ion-color-primary: #6c63ff;  /* morado suave */
+  --ion-color-primary-rgb: 108, 99, 255;
+  --ion-color-secondary: #00bfa6; /* verde aqua */
+  --ion-background-color: #f4f5f8; /* gris claro de fondo */
+}
+
+// Estilos básicos de las pantallas
+.screen-background {
+  --background: var(--dark-color);
+  --color: var(--white-color);
+}
+
+// Estilos para contenedor del icono
+.app-icon-container {
+  display: flex;
+  justify-content: center;
+}
+
+.app-icon-container img {
+  max-width: 70% !important;
+}
+
+.app-name-container {
+  text-align: center;
+}
+
+.app-author-container {
+  display: flex;
+  justify-content: end;
+  padding: 15px;
+}
+
+.app-author-container h4 {
+  color: var(--primary-color);
+}
+
+.btn {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px 60px;
+  background: var(--white-color);
+  color: var(--dark-color);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.basic-border-radius {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}

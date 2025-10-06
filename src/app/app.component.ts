@@ -1,0 +1,18 @@
+import { Component } from '@angular/core';
+import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  imports: [IonApp, IonRouterOutlet],
+})
+export class AppComponent {
+  constructor() {}
+}
+
+addIcons({
+  'eye-outline': eyeOutline,
+  'eye-off-outline': eyeOffOutline,
+});

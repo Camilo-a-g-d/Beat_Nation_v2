@@ -1,0 +1,545 @@
+/* ============================= */
+/*   Estilos Welcome / Onboarding */
+/* ============================= */
+
+/* Fondo general */
+ion-content {
+  --background: transparent !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(135deg, #bbdefb, #f8e1f4, #ffe9d6);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* Animación de fondo */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Slide contenedor */
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Slide contenido (Glass card) */
+.slide-content {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+
+  display: flex;
+  flex-direction: column;   /* 👉 ahora vertical: header / body / footer */
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
+  max-width: 950px;
+  margin: auto;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+/* ============================= */
+/* Header dentro del card (flecha) */
+.card-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.next-btn {
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-btn .btn-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantiene proporciones */
+}
+
+/* ============================= */
+/* Cuerpo central */
+.slide-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.slide-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-img {
+  max-width: 250px;
+  height: auto;
+  display: block;
+}
+
+.slide-right {
+  flex: 1;
+  padding-left: 2rem;
+}
+
+.slide-right h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.slide-right h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.4;
+  color: #000;
+  text-align: center;
+}
+
+.highlight {
+  color: #1565c0;
+  font-weight: 700;
+}
+
+.dots {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  color: #f06292;
+  margin-top: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.5rem;
+}
+
+/* ============================= */
+/* Footer dentro del card (Saltar) */
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content:right; /* 👉 centrado abajo */
+  margin-top: 1rem;
+}
+
+.skip {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+/* --- Responsive: apila en móvil --- */
+@media (max-width: 768px) {
+  .slide.slide-2 .slide-body {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  .slide.slide-2 .slide-right {
+    align-items: center;
+    padding-left: 0;
+    max-width: 90%;
+  }
+  .slide.slide-2 .slide-right h2 { text-align: center; }
+}
+
+
+/* ============================= */
+/* Responsive */
+@media (max-width: 768px) {
+  .slide-body {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slide-left {
+    margin-bottom: 1.5rem;
+  }
+
+  .slide-img {
+    max-width: 70%;
+  }
+
+  .slide-right {
+    padding-left: 0;
+  }
+
+  .slide-right h2 {
+    font-size: 1.4rem;
+  }
+
+  .dots {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================= */
+/* Slide 2 (estructura como el mockup) */
+/* ============================= */
+
+.slide.slide-2 .slide-content {
+  display: flex;
+  flex-direction: row;       /* 👉 imagen izq + texto der */
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  text-align: left;
+  position: relative;
+}
+
+/* Imagen a la izquierda */
+.slide.slide-2 .slide-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.slide-2 .slide-img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+}
+
+/* Texto a la derecha */
+.slide.slide-2 .slide-right {
+  flex: 1;
+  padding-left: 2rem;
+  max-width: 500px; /* 👉 evita que se recorte demasiado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.slide.slide-2 .slide-right h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Flecha arriba derecha */
+.slide.slide-2 .card-header {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Dots centrados abajo */
+/* Dots debajo del texto */
+.slide.slide-2 .dots {
+   position: static;
+  margin-top: -0.2rem;
+  text-align: center;  /* centrado respecto al bloque de texto */
+  font-size: 1.5rem;
+  color: #f06292;
+}
+
+
+/* Saltar abajo derecha */
+.slide.slide-2 .card-footer {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+}
+
+.slide.slide-2 .skip {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* Responsive móvil */
+/* ============================= */
+@media (max-width: 768px) {
+  .slide.slide-2 .slide-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .slide.slide-2 .slide-right {
+    padding-left: 0;
+    margin-top: 1rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .slide.slide-2 .slide-right h2 {
+    font-size: 1.4rem;
+  }
+
+  .slide.slide-2 .dots {
+    position: static;
+    margin-top: 1rem;
+    transform: none;
+  }
+
+  .slide.slide-2 .card-footer {
+    position: static;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+
+/* ============================= */
+/* Slide 3 (imagen izquierda, texto derecha) */
+/* ============================= */
+.slide.slide-3 .slide-content {
+  display: flex;
+  flex-direction: row;       /* 👉 imagen izq + texto der */
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  text-align: left;
+  position: relative;
+}
+
+/* Imagen a la izquierda */
+.slide.slide-3 .slide-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.slide-3 .slide-img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+}
+
+/* Texto a la derecha */
+.slide.slide-3 .slide-right {
+  flex: 1;
+  padding-left: 2rem;
+  max-width: 500px; /* 👉 evita que se recorte demasiado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.slide.slide-3 .slide-right h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Flecha arriba derecha */
+.slide.slide-3 .card-header {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Dots centrados abajo */
+/* Dots debajo del texto */
+.slide.slide-3 .dots {
+   position: static;
+  margin-top: -0.2rem;
+  text-align: center;  /* centrado respecto al bloque de texto */
+  font-size: 1.5rem;
+  color: #f06292;
+}
+
+
+/* Saltar abajo derecha */
+.slide.slide-3 .card-footer {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+}
+
+.slide.slide-3 .skip {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* Responsive móvil */
+/* ============================= */
+@media (max-width: 768px) {
+  .slide.slide-3 .slide-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .slide.slide-3 .slide-right {
+    padding-left: 0;
+    margin-top: 1rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .slide.slide-3 .slide-right h2 {
+    font-size: 1.4rem;
+  }
+
+  .slide.slide-3 .dots {
+    position: static;
+    margin-top: 1rem;
+    transform: none;
+  }
+
+  .slide.slide-3 .card-footer {
+    position: static;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+/* ============================= */
+/* Slide 4 (imagen izquierda, texto derecha) */
+/* ============================= */
+.slide.slide-4 .slide-content {
+  display: flex;
+  flex-direction: row;       /* 👉 imagen izq + texto der */
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  text-align: left;
+  position: relative;
+}
+
+/* Imagen a la izquierda */
+.slide.slide-4 .slide-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide.slide-4 .slide-img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+}
+
+/* Texto a la derecha */
+.slide.slide-4 .slide-right {
+  flex: 1;
+  padding-left: 2rem;
+  max-width: 500px; /* 👉 evita que se recorte demasiado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.slide.slide-4 .slide-right h2 {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 2.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Flecha arriba derecha */
+.slide.slide-4 .card-header {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Dots centrados abajo */
+/* Dots debajo del texto */
+.slide.slide-4 .dots {
+   position: static;
+  margin-top: -0.2rem;
+  text-align: center;  /* centrado respecto al bloque de texto */
+  font-size: 1.5rem;
+  color: #f06292;
+}
+
+
+/* Saltar abajo derecha */
+.slide.slide-4 .card-footer {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+}
+
+.slide.slide-4 .skip {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* Responsive móvil */
+/* ============================= */
+@media (max-width: 768px) {
+  .slide.slide-4 .slide-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .slide.slide-4 .slide-right {
+    padding-left: 0;
+    margin-top: 1rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .slide.slide-4 .slide-right h2 {
+    font-size: 1.4rem;
+  }
+
+  .slide.slide-4 .dots {
+    position: static;
+    margin-top: 1rem;
+    transform: none;
+  }
+
+  .slide.slide-4 .card-footer {
+    position: static;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
