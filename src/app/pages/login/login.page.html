@@ -28,7 +28,7 @@
       </div>
 
 
-      <a (click)="goToForgot()" class="forgot-password">¿Olvidaste tu contraseña?</a>
+      <a (click)="goToForgot()" class="forgot-password" href="forgot-password">¿Olvidaste tu contraseña?</a>
 
       <!-- Botón iniciar sesión -->
       <button class="btn-primary" (click)="onLogin()" [disabled]="loading">
@@ -58,7 +58,7 @@
 
       <p class="register-text">
         ¿No tienes Cuenta?
-        <a (click)="goToRegister()">Regístrate Aquí</a>
+        <a (click)="goToRegister()" href="registro-page">Regístrate Aquí</a>
       </p>
     </div>
   </div>

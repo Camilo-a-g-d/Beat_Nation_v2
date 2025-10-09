@@ -1,0 +1,28 @@
+ion-menu { --width: 300px; }
+ion-menu::part(backdrop) { background: rgba(0,0,0,.45); } /* overlay en móvil */
+
+.menu-header ion-toolbar { --border-width: 0 0 1px 0; }
+.menu-header .user-box {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px 16px;
+  background: var(--ion-color-step-50, #f6f7f9);
+}
+.user-avatar { width:48px; height:48px; }
+.user-info .name { font-weight:600; }
+.user-info .email {
+  font-size:12px; opacity:.7; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:160px;
+}
+
+.menu-list ion-item { border-radius:10px; margin:2px 8px; }
+.menu-list ion-item:hover { --background: rgba(0,0,0,0.04); }
+.logout { margin-top:8px; }
+
+.menu-footer { display:flex; align-items:center; gap:8px; padding:16px; opacity:.9; }
+.app-logo { width:28px; height:28px; border-radius:6px; }
+.brand { font-weight:600; }
+.ver { margin-left:auto; font-size:12px; opacity:.7; }
+
+/* === NUEVO: cuando el split-pane está visible (desktop), oculta el backdrop del menú (por si acaso) === */
+@media (min-width: 992px) {
+  ion-menu::part(backdrop) { display: none !important; }
+}

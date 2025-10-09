@@ -1,0 +1,100 @@
+<!-- Header -->
+<ion-header translucent="true" class="topbar">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="products-container" [fullscreen]="true">
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <button class="nav left" (click)="prevHero()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+
+      <div class="track" #heroTrack>
+        <article class="slide" *ngFor="let s of slides; let i = index"
+                 [style.backgroundImage]="'url(' + s.img + ')'">
+          <div class="overlay"></div>
+          <div class="copy">
+            <h2>{{ s.title }}</h2>
+            <p>{{ s.desc }}</p>
+            <!-- ⬇️ ir a la página de sección -->
+            <a class="btn-ghost"
+               [routerLink]="['/app/products/section']"
+               [queryParams]="{ cat: s.cat }">
+              {{ s.cta || 'Ver más' }}
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <button class="nav right" (click)="nextHero()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </section>
+
+    <!-- LO MÁS VENDIDO -->
+    <section class="headline">
+      <h3>Lo más vendido</h3>
+      <!-- este puede seguir a la lista general -->
+      <a class="see-all"
+         [routerLink]="['/app/products']"
+         [queryParams]="{ view: 'list', sort: 'top' }">Ver todo</a>
+    </section>
+
+    <section class="best">
+      <button class="nav left" (click)="bestPrev()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+
+      <div class="cards" #bestTrack>
+        <article class="card glass" *ngFor="let p of bestSellers; trackBy: trackById">
+          <div class="thumb" [style.backgroundImage]="'url(' + p.img + ')'"></div>
+          <div class="body">
+            <h4>{{ p.name }}</h4>
+            <small class="muted">Cantidades disponibles</small>
+            <div class="meta">
+              <span class="price">{{ p.price | currency:'COP':'symbol':'1.0-0' }}</span>
+              <ion-button size="small" fill="solid">Agregar</ion-button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <button class="nav right" (click)="bestNext()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </section>
+
+    <!-- BANNER INFO -->
+    <section class="info glass">
+      <h4>Sabemos que…</h4>
+      <p>
+        Elegir puede ser tedioso. Por eso organizamos nuestros productos en categorías claras para que llegues más rápido
+        a lo que necesitas. Despliega el menú o explora estas secciones destacadas: Ropa, Accesorios, Instrumentos,
+        Posters y Vinilos. ¿No sabes por dónde empezar? Revisa Lo más vendido o las Ofertas de hoy.
+      </p>
+    </section>
+
+    <p class="hint">Presiona cualquier imagen y súmate al ritmo</p>
+
+    <!-- CATEGORÍAS HERO -->
+    <section class="cats">
+      <a class="cat glass big"
+         *ngFor="let c of catHeroes"
+         [style.backgroundImage]="'url(' + c.img + ')'"
+         [routerLink]="['/app/products/section']"
+         [queryParams]="{ cat: c.id }">
+        <div class="veil"></div>
+        <div class="title">
+          {{ c.title }}
+        </div>
+        <div class="cta">
+          <span>Ver más</span>
+        </div>
+      </a>
+    </section>
+
+  </div>
+</ion-content>

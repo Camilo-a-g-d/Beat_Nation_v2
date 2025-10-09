@@ -1,0 +1,76 @@
+<ion-header translucent="true" class="topbar">
+  <app-header></app-header> <!-- pinta SOLO el ion-toolbar -->
+</ion-header>
+
+<ion-content class="home-container" [fullscreen]="true">
+  <div class="home-wrapper">
+
+    <!-- HERO (puedes añadir glass-section si lo quieres semitransparente) -->
+    <section class="hero glass-section">
+      <div class="hero-inner">
+        <h1>¡Bienvenido {{ firstName }}!</h1>
+        <p class="lead">El ritmo de tu estilo empieza aquí.</p>
+        <p class="sub">Haz que tu look suene tan fuerte como tu playlist.</p>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section class="cats">
+      <h2 class="section-title">¿Qué has pensado para tu estilo hoy?</h2>
+      <div class="cat-grid">
+        <div class="cat glass-card" *ngFor="let c of categories">
+          <ion-icon [name]="c.icon" class="cat-icon"></ion-icon>
+          <a class="cat-title">{{ c.title }}</a>
+          <p class="cat-desc">{{ c.desc }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE DESCRIPTIVO -->
+    <section class="about glass-section">
+      <div class="about-inner">
+        <h3>Beat<span class="accent">Nation</span> no es solo una aplicación, es tu acompañante a tu look y a tu estilo.</h3>
+        <p>
+          En BeatNation conectas moda y música en un mismo lugar. Explora colecciones curadas de ropa, accesorios e instrumentos inspirados en los artistas y géneros que te mueven. Descubre recomendaciones hechas para ti, sigue los próximos eventos y encuentra tiendas cercanas para recoger tu pedido cuando te convenga. Desde un hoodie de tu banda favorita hasta ese teclado para tu home studio, todo está pensado para que armes tu estilo sin perder el ritmo. Inicia sesión para guardar favoritos, revisar pedidos y recibir alertas de lanzamientos y ofertas que van con tu vibra.
+        </p>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section class="events">
+      <div class="events-bg"></div>
+      <div class="events-inner">
+        <h2 class="events-title">Próximos Eventos - Síguelos aquí con nosotros</h2>
+
+        <div class="cards-scroll">
+          <article class="event-card glass-card" *ngFor="let e of events">
+            <div class="img" [style.backgroundImage]="'url(' + e.img + ')'"></div>
+            <div class="card-body">
+              <small class="tag">{{ e.artist }}</small>
+              <h4>{{ e.title }}</h4>
+              <p>{{ e.date }} · {{ e.city }}</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="pill glass-pill">Próximamente una sección para los eventos…</div>
+      </div>
+    </section>
+
+    <!-- TIENDAS -->
+    <section class="stores">
+      <h2 class="section-title">Tiendas cercanas</h2>
+      <div class="store-grid">
+        <article class="store-card glass-card" *ngFor="let s of stores">
+          <div class="img" [style.backgroundImage]="'url(' + s.img + ')'"></div>
+          <div class="card-body">
+            <h4>{{ s.name }}</h4>
+            <p>{{ s.desc }}</p>
+            <p class="rating">Calificación: <strong>{{ s.rating | number:'1.1-1' }}</strong> ★</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</ion-content>

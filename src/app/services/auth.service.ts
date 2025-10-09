@@ -9,6 +9,7 @@ export interface User {
   phone?: string;
   passwordHash: string;
   createdAt: string;
+  avatarUrl?: string; // ⬅️ NUEVO: foto del usuario
 }
 
 export interface Session {
@@ -18,7 +19,7 @@ export interface Session {
 }
 
 type ResetMap = Record<string, {
-  code: string;         // PIN de 6 dígitos
+  code: string;         // PIN (ajustado a 4 en requestPasswordReset)
   expiresAt: number;    // epoch ms
   verified: boolean;    // true después de verify-pin
   attempts: number;     // control básico de intentos
@@ -75,6 +76,7 @@ export class AuthService {
       phone: data.phone?.trim(),
       passwordHash: await this.hashPassword(data.password),
       createdAt: new Date().toISOString(),
+      // avatarUrl: undefined (se setea luego en Perfil)
     };
     users.push(user);
     await this.saveUsers(users);
@@ -103,6 +105,32 @@ export class AuthService {
     return this.storage.get<Session>(this.KEYS.SESSION);
   }
 
+  // ✅ NUEVO: obtener el usuario logueado (para el menú / header)
+  async getCurrentUser(): Promise<User | null> {
+    const session = await this.getSession();
+    if (!session) return null;
+    const users = await this.loadUsers();
+    return users.find(u => u.id === session.userId) ?? null;
+  }
+
+  // ✅ NUEVO: actualizar datos del perfil actual (nombre, teléfono, avatar, etc.)
+  async updateProfile(partial: { name?: string; phone?: string; avatarUrl?: string; }): Promise<User> {
+    const session = await this.getSession();
+    if (!session) throw new Error('NO_SESSION');
+    const users = await this.loadUsers();
+    const idx = users.findIndex(u => u.id === session.userId);
+    if (idx === -1) throw new Error('USER_NOT_FOUND');
+
+    users[idx] = { ...users[idx], ...partial };
+    await this.saveUsers(users);
+    return users[idx];
+  }
+
+  // ✅ NUEVO: atajo para actualizar solo el avatar
+  async setAvatar(url: string): Promise<User> {
+    return this.updateProfile({ avatarUrl: url });
+  }
+
   // ----- Reset de contraseña flow -----
   async requestPasswordReset(email: string): Promise<{ code: string; expiresAt: number }> {
     const users = await this.loadUsers();
@@ -110,7 +138,7 @@ export class AuthService {
     if (!exists) throw new Error('EMAIL_NOT_FOUND');
 
     const map = await this.loadReset();
-    const code = this.genCode(4);
+    const code = this.genCode(4); // UI de 4 dígitos
     const expiresAt = Date.now() + 5 * 60 * 1000; // 5 min
 
     map[email.toLowerCase()] = { code, expiresAt, verified: false, attempts: 0 };
