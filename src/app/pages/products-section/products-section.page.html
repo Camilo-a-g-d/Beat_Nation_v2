@@ -1,0 +1,120 @@
+<ion-header translucent="true" class="topbar">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="cat-container" [fullscreen]="true">
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="hero glass">
+      <div class="copy">
+        <h1>Bienvenido a {{ displayName }}</h1>
+        <p>{{ heroDesc }}</p>
+
+        <!-- ⬇️ navega directo -->
+        <a class="btn-ghost"
+           [routerLink]="['/app/products']"
+           [queryParams]="{ cat: selectedCat, view: 'list' }">
+Regresar a Productos
+        </a>
+      </div>
+    </section>
+
+
+    <!-- LO MÁS VENDIDO -->
+    <section class="block">
+      <div class="block-head">
+        <h3>Lo más vendido</h3>
+
+        <!-- ⬇️ navega directo -->
+        <a [routerLink]="['/app/products']"
+           [queryParams]="{ cat: selectedCat, view: 'list' }">
+          Ver todo
+        </a>
+      </div>
+
+      <div class="carousel">
+        <button class="nav left" (click)="move(bestTrack, -1)">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </button>
+
+        <div class="track" #bestTrack>
+          <article class="card glass" *ngFor="let p of best; trackBy: trackById">
+            <div class="thumb" [style.backgroundImage]="'url(' + p.img + ')'"></div>
+            <div class="body">
+              <h4>{{ p.name }}</h4>
+              <div class="price">{{ p.price | currency:'COP':'symbol':'1.0-0' }}</div>
+              <small class="muted">Cantidades disponibles</small>
+              <button  color="dark" class="btn-black" (click)="addToCart(p)">Agregar</button>
+            </div>
+          </article>
+        </div>
+
+        <button class="nav right" (click)="move(bestTrack, +1)">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </div>
+    </section>
+
+    <!-- RECOMENDACIONES -->
+    <section class="block">
+      <div class="block-head">
+        <h3>Recomendaciones para ti</h3>
+
+        <!-- ⬇️ navega directo -->
+        <a [routerLink]="['/app/products']"
+           [queryParams]="{ cat: selectedCat, view: 'list' }">
+          Ver todo
+        </a>
+      </div>
+
+      <div class="carousel">
+        <button class="nav left" (click)="move(recoTrack, -1)">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </button>
+
+        <div class="track" #recoTrack>
+          <article class="card glass" *ngFor="let p of recos; trackBy: trackById">
+            <div class="thumb" [style.backgroundImage]="'url(' + p.img + ')'"></div>
+            <div class="body">
+              <h4>{{ p.name }}</h4>
+              <div class="price">{{ p.price | currency:'COP':'symbol':'1.0-0' }}</div>
+              <small class="muted">Cantidades disponibles</small>
+              <button color="dark" class="btn-black" (click)="addToCart(p)">Agregar</button>
+            </div>
+          </article>
+        </div>
+
+        <button class="nav right" (click)="move(recoTrack, +1)">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS (GRID) -->
+    <section class="grid-block">
+      <h3>Productos</h3>
+
+      <div class="grid">
+        <article class="card glass" *ngFor="let p of grid; trackBy: trackById">
+          <div class="thumb" [style.backgroundImage]="'url(' + p.img + ')'"></div>
+          <div class="body">
+            <h4>{{ p.name }}</h4>
+            <div class="price">{{ p.price | currency:'COP':'symbol':'1.0-0' }}</div>
+            <small class="muted">Cantidades disponibles</small>
+            <button color="dark" class="btn-black" (click)="addToCart(p)">Agregar</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="more">
+        <!-- ⬇️ navega directo -->
+        <a [routerLink]="['/app/products']"
+           [queryParams]="{ cat: selectedCat, view: 'list' }">
+          Ver más
+        </a>
+      </div>
+    </section>
+
+  </div>
+</ion-content>

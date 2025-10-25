@@ -1,0 +1,205 @@
+/* Fondo del content */
+ion-content.cart-container {
+  --background: #fff;
+}
+
+/* Wrapper principal */
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* Título */
+.title {
+  font-weight: 800;
+  font-size: 22px;
+  margin: 8px 0 18px;
+}
+
+/* Lista de filas */
+.rows {
+  display: grid;
+  gap: 18px;
+}
+
+/* Fila de producto */
+.row {
+  display: grid;
+  grid-template-columns: 24px 72px 1fr auto 36px; /* radio | img | info | qty | trash */
+  align-items: center;
+  gap: 14px;
+  padding: 12px 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+}
+
+/* Col: selección (radio “mock”) */
+.col.select input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #111;   /* navegadores modernos */
+  /* Fallback visual */
+  appearance: none;
+  border: 2px solid #bdbdbd;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+}
+.col.select input[type="radio"]::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: #111;
+  opacity: .08;         /* leve “seleccionado” desactivado */
+}
+
+/* Col: thumbnail */
+.col.thumb {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.col.thumb img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+}
+
+/* Col: info (nombre + precio) */
+.col.info {
+  display: grid;
+  gap: 4px;
+  min-width: 0; /* para truncar correctamente */
+}
+.col.info .name {
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.col.info .price {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Col: cantidad (+ n -) */
+.col.qty {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 10px;
+}
+.col.qty .btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+}
+.col.qty .btn:hover { filter: brightness(0.95); }
+.col.qty .val {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Col: eliminar */
+.col.del .btn-icon {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #6b6b6b;
+}
+.col.del .btn-icon ion-icon {
+  font-size: 18px;
+}
+.col.del .btn-icon:hover {
+  background: rgba(229, 57, 53, .08);
+  color: #e53935;
+}
+
+/* Separador total */
+.sep {
+  height: 2px;
+  background: #111;
+  border: 0;
+  margin: 10px 0 0;
+}
+
+/* Total */
+.footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+}
+.footer .label {
+  font-weight: 800;
+  font-size: 18px;
+}
+.footer .total {
+  font-weight: 800;
+  font-size: 18px;
+}
+.footer .total span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Acciones (vaciar / pagar) */
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Estado vacío */
+.empty {
+  padding: 28px 0;
+  color: #777;
+  text-align: center;
+}
+.empty a {
+  color: #255ff1;
+  font-weight: 700;
+  text-decoration: none;
+}
+.empty a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 20px 56px 1fr auto 32px;
+    gap: 10px;
+    padding: 10px 8px;
+  }
+  .col.thumb,
+  .col.thumb img {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+  }
+  .col.info .name { font-size: 13px; }
+}

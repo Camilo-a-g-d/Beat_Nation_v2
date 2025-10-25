@@ -1,0 +1,108 @@
+<ion-split-pane contentId="main" [when]="isDesktop && isPinned">
+  <!-- MENÚ LATERAL -->
+  <ion-menu
+    side="start"
+    contentId="main"
+    [type]="(isDesktop && isPinned) ? 'reveal' : 'overlay'"
+    [swipeGesture]="!isDesktop || !isPinned">
+
+    <ion-header class="menu-header">
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+
+        <!-- Desktop: colapsar/fijar -->
+        <ion-buttons slot="end" *ngIf="isDesktop">
+          <ion-button fill="clear" aria-label="Colapsar/Expandir" (click)="togglePin()">
+            <ion-icon [icon]="icons.chevronBack"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+        <!-- Móvil: cerrar (overlay) -->
+        <ion-buttons slot="end" *ngIf="!isDesktop">
+          <ion-menu-toggle autoHide="false">
+            <ion-button fill="clear" aria-label="Cerrar">
+              <ion-icon [icon]="icons.close"></ion-icon>
+            </ion-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+      </ion-toolbar>
+
+      <div class="user-box">
+        <ion-avatar class="user-avatar">
+          <img [src]="avatarUrl || 'assets/images/avatar-placeholder.png'" alt="avatar" />
+        </ion-avatar>
+        <div class="user-info">
+          <div class="name">{{ displayName || 'Usuario' }}</div>
+          <div class="email">{{ user?.email || '' }}</div>
+        </div>
+      </div>
+    </ion-header>
+
+    <ion-content>
+      <ion-list lines="none" class="menu-list">
+
+        <ion-menu-toggle autoHide="false">
+          <ion-item routerDirection="root" [routerLink]="['/app/home']" detail="false">
+            <ion-label>Inicio</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <!-- Categorías desplegable -->
+        <ion-accordion-group class="menu-acc">
+          <ion-accordion value="prod">
+            <ion-item slot="header" detail="false">
+              <ion-label>Categorías</ion-label>
+            </ion-item>
+            <div slot="content">
+              <ion-menu-toggle autoHide="true">
+                <ion-item routerDirection="root" [routerLink]="['/app/products/section']" [queryParams]="{ cat: 'ropa' }">
+                  <ion-label>Ropa</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+              <ion-menu-toggle autoHide="true">
+                <ion-item routerDirection="root" [routerLink]="['/app/products/section']" [queryParams]="{ cat: 'accesorios' }">
+                  <ion-label>Accesorios</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+              <ion-menu-toggle autoHide="true">
+                <ion-item routerDirection="root" [routerLink]="['/app/products/section']" [queryParams]="{ cat: 'instrumentos' }">
+                  <ion-label>Instrumentos</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+              <ion-menu-toggle autoHide="true">
+                <ion-item routerDirection="root" [routerLink]="['/app/products/section']" [queryParams]="{ cat: 'posters' }">
+                  <ion-label>Posters</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+              <ion-menu-toggle autoHide="true">
+                <ion-item routerDirection="root" [routerLink]="['/app/products/section']" [queryParams]="{ cat: 'vinilos' }">
+                  <ion-label>Vinilos</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+
+        <!-- Resto de items -->
+        <ion-menu-toggle autoHide="false" *ngFor="let it of menu">
+          <ion-item [routerLink]="it.route" routerDirection="root" detail="false">
+            <ion-label>{{ it.label }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item button class="logout" (click)="onLogout()">
+          <ion-label><strong>Cerrar Sesión</strong></ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="menu-footer">
+        <img class="app-logo" src="assets/images/app-icon.png" alt="BeatNation" />
+        <span class="brand">BeatNation</span>
+        <span class="ver">v.2</span>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-split-pane>

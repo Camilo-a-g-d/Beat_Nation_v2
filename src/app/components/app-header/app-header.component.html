@@ -1,0 +1,35 @@
+<ion-toolbar class="toolbar">
+  <ion-buttons slot="start" class="left">
+    <ion-menu-button autoHide="false" aria-label="Abrir menú">
+      <!-- Si quieres forzar ícono propio del menú: -->
+      <!-- <ion-icon [icon]="icons.menu"></ion-icon> -->
+    </ion-menu-button>
+
+    <img class="brand-logo" src="assets/images/app-icon.png" alt="BeatNation" />
+    <span class="brand-text">BeatNation</span>
+  </ion-buttons>
+
+  <ion-buttons slot="end" class="right">
+    <ion-button
+      fill="clear"
+      aria-label="Carrito"
+      [routerLink]="['/app/cart']"
+      (click)="blurActive()">
+      <!-- 👇 usamos [icon] con el SVG importado -->
+      <ion-icon [icon]="icons.cart"></ion-icon>
+    </ion-button>
+
+    <div class="divider" role="presentation"></div>
+
+    <ion-avatar
+      class="top-avatar"
+      [routerLink]="['/app/profile']"
+      aria-label="Perfil"
+      (click)="blurActive()">
+      <img
+        [src]="avatarUrl || 'assets/images/avatar-placeholder.png'"
+        alt="Foto de perfil"
+        (error)="onAvatarError($event)" />
+    </ion-avatar>
+  </ion-buttons>
+</ion-toolbar>

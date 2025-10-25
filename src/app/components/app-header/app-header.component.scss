@@ -1,0 +1,7 @@
+@media (min-width: 992px) {
+  ion-menu-button { display: none !important; }
+}
+  
+:host-context(ion-split-pane.split-pane-visible) ion-menu-button {
+  display: none !important;
+}

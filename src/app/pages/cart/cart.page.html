@@ -1,0 +1,70 @@
+<ion-header translucent="true" class="topbar">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content class="cart-container" [fullscreen]="true">
+  <div class="page">
+
+    <h2 class="title">Carrito de Compras</h2>
+
+    <!-- Lista de items -->
+    <ng-container *ngIf="items.length; else emptyTpl">
+      <div class="rows">
+        <div class="row" *ngFor="let it of items; trackBy: trackById">
+
+          <!-- (mock) selección -->
+          <div class="col select">
+            <input type="radio" disabled>
+          </div>
+
+          <!-- imagen -->
+          <div class="col thumb">
+            <img [src]="it.img || 'assets/images/placeholders/product.png'" [alt]="it.name">
+          </div>
+
+          <!-- nombre / precio -->
+          <div class="col info">
+            <div class="name">{{ it.name }}</div>
+            <div class="price">{{ it.price | currency:'COP':'symbol':'1.0-0' }}</div>
+          </div>
+
+          <!-- cantidad -->
+          <div class="col qty">
+            <button class="btn" (click)="inc(it)">+</button>
+            <span class="val">{{ it.qty }}</span>
+            <button class="btn" (click)="dec(it)">−</button>
+          </div>
+
+          <!-- eliminar -->
+          <div class="col del">
+            <button class="btn-icon" title="Eliminar" (click)="remove(it)">
+            <ion-icon [icon]="trashIcon" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+
+      <!-- Total -->
+      <div class="footer">
+        <div class="label">Pago:</div>
+        <div class="total">{{ total | currency:'COP':'symbol':'1.0-0' }}</div>
+      </div>
+
+      <div class="actions">
+        <ion-button color="medium" fill="outline" (click)="clearAll()">Vaciar carrito</ion-button>
+        <ion-button color="dark" fill="solid">Ir a pagar</ion-button>
+      </div>
+    </ng-container>
+
+    <!-- vacío -->
+    <ng-template #emptyTpl>
+      <div class="empty">
+        <p>Tu carrito está vacío.</p>
+        <a routerLink="/app/products">Explorar productos</a>
+      </div>
+    </ng-template>
+
+  </div>
+</ion-content>

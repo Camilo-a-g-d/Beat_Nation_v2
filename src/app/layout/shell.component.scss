@@ -1,0 +1,43 @@
+/* ancho del sidebar */
+ion-menu { --width: 300px; }
+
+/* overlay (móvil) */
+ion-menu::part(backdrop) { background: rgba(0,0,0,.45); }
+
+.menu-header ion-toolbar { --border-width: 0 0 1px 0; }
+.menu-header .user-box {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px 16px;
+  background: var(--ion-color-step-50, #f6f7f9);
+}
+.user-avatar { width:48px; height:48px; }
+.user-info .name { font-weight:600; color: #000; }
+.user-info .email {
+  font-size:12px; opacity:.7; white-space:nowrap; overflow:hidden;
+  text-overflow:ellipsis; max-width:160px; color:#000;
+}
+
+.menu-list ion-item { border-radius:10px; margin:2px 8px; }
+.menu-list ion-item:hover { --background: rgba(0,0,0,0.04); }
+.logout { margin-top:8px; }
+
+.menu-footer {
+  display:flex; align-items:center; gap:8px; padding:16px; opacity:.9;
+}
+.app-logo { width:28px; height:28px; border-radius:6px; }
+.brand { font-weight:600; }
+.ver { margin-left:auto; font-size:12px; opacity:.7; }
+
+/* ===== Desktop ===== */
+@media (min-width: 992px) {
+  /* sin backdrop cuando está fijado (reveal) */
+  ion-menu::part(backdrop) { display: none !important; }
+  ion-menu::part(container) { box-shadow: inset -1px 0 0 rgba(0,0,0,.06); }
+
+  /* en desktop ocultamos solo el título "Menú"; dejamos el botón de colapsar */
+  .menu-header ion-title { display: none; }
+}
+
+/* Si ya ocultas el hamburguesa en header cuando el split-pane está visible, mantenlo allí:
+:host-context(ion-split-pane.split-pane-visible) ion-menu-button { display:none !important; }
+*/

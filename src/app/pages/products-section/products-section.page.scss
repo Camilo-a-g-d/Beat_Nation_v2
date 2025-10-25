@@ -1,0 +1,101 @@
+ion-content.cat-container{
+  --background: transparent !important;
+background-color: #fff;
+background-size: 400% 400%;
+  animation: gradientMove 16s ease infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+.page{ max-width: 1160px; margin: 0 auto; padding: 12px 12px 48px; }
+
+/* --------- HERO --------- */
+.glass{
+  background: linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.25));
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.08);
+  backdrop-filter: blur(14px);
+}
+.hero{
+  min-height: clamp(180px, 26vw, 280px);
+  display: grid; place-items: center start;
+  padding: clamp(18px, 3vw, 28px);
+  margin-bottom: 22px;
+  background: linear-gradient(120deg, #d9e3ff, #ffd4ea);
+}
+.hero .copy h1{ margin: 0 0 6px; font-weight: 800; font-size: clamp(20px, 3.2vw, 34px); }
+.hero .copy p{ margin: 0 0 14px; opacity:.85; }
+.btn-ghost{
+  display:inline-block; padding: 10px 18px; border-radius: 999px; font-weight: 800;
+  background:#fff; color:#111; box-shadow: 0 6px 18px rgba(0,0,0,.12); border: none;
+}
+
+/* --------- CATS ROW --------- */
+.cats-row{ margin: 6px 0 12px; }
+.cats-row h3{ font-weight: 800; margin: 0 0 8px; }
+.chips{
+  display:flex; gap: 16px; overflow-x: auto; padding: 6px 2px;
+}
+.chip{
+  background: transparent; border: none; text-align:center; cursor: pointer;
+}
+.chip .circle{
+  width: 56px; height: 56px; border-radius: 999px; background: #ddd;
+  margin: 0 auto 6px;
+}
+.chip span{ font-weight: 700; font-size: 12px; }
+.chip.active span{ color: #0c47ff; }
+
+/* --------- BLOQUES CON CARRUSEL --------- */
+.block{ margin: 14px 0 6px; }
+.block-head{ display:flex; align-items:center; gap: 10px; }
+.block-head h3{ margin: 0; font-weight: 800; }
+.block-head a{ margin-left: auto; font-size: 12px; opacity:.7; cursor: pointer; }
+
+.carousel{ position: relative; }
+.carousel .track{
+  display: grid; grid-auto-flow: column; gap: 12px;
+  grid-auto-columns: minmax(240px, 1fr);
+  overflow-x: auto; padding: 2px 40px;
+  scroll-snap-type: x mandatory;
+}
+.carousel .card{ scroll-snap-align: start; border-radius: 16px; overflow: hidden; }
+.carousel .thumb{ height: 140px; background-size: cover; background-position: center; }
+.carousel .body{ padding: 12px; display:grid; gap: 8px; }
+.muted{ opacity: .7; font-size: 12px; }
+.price{ font-weight: 800; }
+
+.nav{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px; border-radius: 999px; border: 1px solid rgba(0,0,0,.1);
+  background: rgba(255,255,255,.85);
+  display: grid; place-items: center; cursor:pointer;
+}
+.nav.left{ left: 4px; }
+.nav.right{ right: 4px; }
+
+/* --------- GRID --------- */
+.grid-block{ margin-top: 18px; }
+.grid-block h3{ font-weight: 800; margin: 0 0 12px; }
+
+.grid{
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+@media (max-width: 980px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 620px){ .grid{ grid-template-columns: 1fr; } }
+
+.grid .card{ border-radius: 16px; overflow: hidden; }
+.grid .thumb{ height: 160px; background-size: cover; background-position: center; }
+.grid .body{ padding: 12px; display:grid; gap: 8px; }
+
+.btn-black{
+  background:#111; color:#fff; border-radius: 999px; padding: 8px 14px; border:none; font-weight:800;
+}
+
+.more{ text-align:center; margin-top: 10px; }
+.more a{ cursor:pointer; font-weight:800; }

@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
     // si ya hay sesión activa, ve a /home
     const s = await this.auth.getSession();
-    if (s) this.nav.navigateRoot('/home');
+    if (s) this.nav.navigateRoot('/app/home');
   }
 
   togglePass() { this.showPass = !this.showPass; }
@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
       }
 
       await this.msg('¡Bienvenido! 👋', 'success');
-      this.nav.navigateRoot('/home'); // ajusta si tu ruta de inicio es otra
+      this.nav.navigateRoot('/app/home'); // ajusta si tu ruta de inicio es otra
     } catch {
       this.msg('Credenciales inválidas', 'danger');
     } finally {
@@ -69,8 +69,8 @@ export class LoginPage implements OnInit {
     }
   }
 
-  goToForgot()   { this.nav.navigateForward('/forgot-password'); }
-  goToRegister() { this.nav.navigateForward('/registro'); }
+  goToForgot()   { this.nav.navigateForward('forgot-password'); }
+  goToRegister() { this.nav.navigateForward('registro-page'); }
 
   // Placeholder para el botón de Google
   async loginWithGoogle() {

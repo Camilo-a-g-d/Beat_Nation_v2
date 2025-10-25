@@ -1,0 +1,157 @@
+/* ============================= */
+/* Estilos Home (match Login)    */
+/* ============================= */
+
+/* Gradiente animado + quitar paddings de ion-content */
+ion-content.home-container {
+  --background: transparent !important;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+
+  background-color: #fff;
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* Mantener el alto y flujo del scroll */
+ion-content.home-container::part(scroll) {
+  min-height: 100vh;
+}
+
+/* wrapper general (similar a .login-card margins en mobile) */
+.home-wrapper {
+  width: 100%;
+  padding: 16px;
+}
+
+/* Reutilizable: glassmorphism para tarjetas/secciones */
+.glass-card,
+.glass-section {
+  background-color: #fff;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* pill glass (para el aviso de eventos) */
+.glass-pill {
+  background-color: #fff;
+  border-radius: 999px;
+  padding: 10px 18px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  color: #255ff1;
+}
+
+/* Animación del gradiente (igual al login) */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================= */
+/* HERO */
+.hero {
+  margin-top: 75px;
+  padding: 28px 18px;
+  margin-bottom: 18px;
+  background-image: url('/assets/images/fondo.png');
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+.hero h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 6vw, 48px);
+  margin: 0 0 6px;
+}
+.hero .lead { font-size: clamp(14px, 2.4vw, 22px); color: #1C2730; opacity: .9; margin-bottom: 4px; }
+.hero .sub  { font-weight: 600; }
+
+/* ============================= */
+/* CATEGORÍAS */
+.cats { margin: 16px auto 8px; max-width: 1100px; }
+.section-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(18px, 2.6vw, 26px);
+  margin: 20px 0;
+}
+.cat-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 860px) { .cat-grid { grid-template-columns: 1fr; } }
+
+.cat {
+  text-align: center;
+  padding: 18px 16px;
+}
+.cat-icon { font-size: 56px; margin-bottom: 8px; }
+.cat-title { color: #255ff1; font-weight: 700; display: inline-block; margin-bottom: 6px; }
+.cat-desc { opacity: .9; }
+
+/* ============================= */
+/* ABOUT */
+.about {
+  margin: 22px auto;
+  padding: 22px 18px;
+  max-width: 1100px;
+  background-image: url('/assets/images/Fondos_quint.png');
+  background-size: cover;
+  background-position: center;
+}
+.about-inner { max-width: 1000px; margin: 0 auto; }
+.about-inner h3 { font-size: clamp(18px, 3vw, 28px); font-weight: 800; margin: 0 0 10px; }
+.about-inner p  { margin: 0; opacity: .95; }
+.about-inner .accent { color: #111; }
+
+/* ============================= */
+/* EVENTOS */
+.events {
+  position: relative; padding: 26px 0; margin: 10px 0 18px;
+}
+.events-bg {
+  position: absolute; inset: 0;
+  background: url('/assets/images/bg-bogota.png') center/cover no-repeat;
+  filter: brightness(.55);
+}
+.events-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 8px; }
+.events-title {
+  color: #fff; text-align: center; margin-bottom: 16px; font-weight: 700;
+  text-shadow: 0 1px 12px rgba(0,0,0,.35);
+}
+.cards-scroll {
+  display: grid; grid-auto-flow: column; gap: 14px;
+  overflow-x: auto; padding: 8px 0 10px;
+}
+.event-card {
+  width: 300px; min-width: 300px;
+  overflow: hidden; border-radius: 18px;
+    background-color: #fff;
+}
+.event-card .img { height: 160px; background-size: cover; background-position: center; }
+.event-card .card-body { padding: 10px 12px 14px; }
+.event-card .tag { display: block; text-transform: lowercase; opacity: .7; margin-bottom: 4px; }
+.event-card h4 { margin: 0 0 4px; font-size: 16px; }
+.pill { margin: 18px auto 0; width: fit-content; }
+
+/* ============================= */
+/* TIENDAS */
+.stores { max-width: 1100px; margin: 0 auto 26px; }
+.store-grid {
+  display: grid; gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 960px) { .store-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .store-grid { grid-template-columns: 1fr; } }
+
+.store-card { overflow: hidden; }
+.store-card .img { height: 160px; background-size: cover; background-position: center; }
+.store-card .card-body { padding: 12px 14px 16px; }
+.store-card .rating { margin-top: 6px; color: #1C2730; }
