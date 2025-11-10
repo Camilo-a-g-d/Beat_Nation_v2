@@ -15,6 +15,7 @@
     </section>
 
     <!-- CATEGORÍAS -->
+<<<<<<< HEAD
 <section class="cats">
   <h2 class="section-title">¿Qué has pensado para tu estilo hoy?</h2>
   <div class="cat-grid">
@@ -27,6 +28,18 @@
   </div>
 </section>
 
+=======
+    <section class="cats">
+      <h2 class="section-title">¿Qué has pensado para tu estilo hoy?</h2>
+      <div class="cat-grid">
+        <div class="cat glass-card" *ngFor="let c of categories">
+          <ion-icon [name]="c.icon" class="cat-icon"></ion-icon>
+          <a class="cat-title">{{ c.title }}</a>
+          <p class="cat-desc">{{ c.desc }}</p>
+        </div>
+      </div>
+    </section>
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
 
     <!-- BLOQUE DESCRIPTIVO -->
     <section class="about glass-section">

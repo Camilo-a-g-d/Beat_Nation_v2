@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
 
+<<<<<<< HEAD
 // Importa los SVGs de Ionicons que vas a usar
 import { cartOutline, menuOutline, personCircleOutline } from 'ionicons/icons';
 
@@ -13,6 +14,31 @@ import { cartOutline, menuOutline, personCircleOutline } from 'ionicons/icons';
   imports: [CommonModule, IonicModule, RouterModule],
   templateUrl: './app-header.component.html',
   // si prefieres mover los estilos a .scss, cambia a styleUrls
+=======
+@Component({
+  standalone: true,
+  selector: 'app-header', // se usará dentro de <ion-header> en cada página
+  imports: [CommonModule, IonicModule, RouterModule],
+  template: `
+    <ion-toolbar class="toolbar">
+      <ion-buttons slot="start" class="left">
+        <ion-menu-button autoHide="false" aria-label="Abrir menú"></ion-menu-button>
+        <img class="brand-logo" src="assets/images/app-icon.png" alt="BeatNation" />
+        <span class="brand-text">BeatNation</span>
+      </ion-buttons>
+
+      <ion-buttons slot="end" class="right">
+        <ion-button fill="clear" aria-label="Carrito" [routerLink]="['/app/cart']">
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button>
+        <div class="divider"></div>
+        <ion-avatar class="top-avatar" [routerLink]="['/app/profile']" aria-label="Perfil">
+          <img [src]="avatarUrl || 'assets/images/avatar-placeholder.png'" alt="perfil" />
+        </ion-avatar>
+      </ion-buttons>
+    </ion-toolbar>
+  `,
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
   styles: [`
     :host{ display:block; } /* el toolbar ocupa el ancho del header */
 
@@ -36,6 +62,7 @@ import { cartOutline, menuOutline, personCircleOutline } from 'ionicons/icons';
 export class AppHeaderComponent implements OnInit {
   user: User | null = null;
   avatarUrl: string | null = null;
+<<<<<<< HEAD
 
   // Íconos expuestos al template (ya no usamos name="..."):
   icons = {
@@ -46,10 +73,14 @@ export class AppHeaderComponent implements OnInit {
 
   constructor(private auth: AuthService) {}
 
+=======
+  constructor(private auth: AuthService) {}
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
   async ngOnInit(){
     this.user = await this.auth.getCurrentUser();
     this.avatarUrl = this.user?.avatarUrl ?? null;
   }
+<<<<<<< HEAD
 
   // Evita el warning "Blocked aria-hidden..." moviendo el foco
   blurActive() {
@@ -60,4 +91,6 @@ export class AppHeaderComponent implements OnInit {
   onAvatarError(e: Event) {
     (e.target as HTMLImageElement).src = 'assets/images/avatar-placeholder.png';
   }
+=======
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
 }

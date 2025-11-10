@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { IonicModule, NavController, ToastController, MenuController } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { AuthService, User } from '../services/auth.service';
 
 import { chevronBackOutline, closeOutline } from 'ionicons/icons';
 
+=======
+import { IonicModule, NavController, ToastController } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { AuthService, User } from '../services/auth.service';
+
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
 interface MenuItem {
   icon?: string;
   label: string;
@@ -20,17 +27,23 @@ interface MenuItem {
   styleUrls: ['./shell.component.scss'],
 })
 export class ShellComponent implements OnInit {
+<<<<<<< HEAD
   /** >=992px */
   isDesktop = false;
   /** sidebar fijado (split-pane activo) */
   isPinned = true;
 
+=======
+  /** true => menú fijo (split-pane visible) */
+  isDesktop = false;
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
   private mq!: MediaQueryList;
 
   user: User | null = null;
   avatarUrl: string | null = null;
   displayName = '';
 
+<<<<<<< HEAD
   // para usar con [icon]
   icons = {
     chevronBack: chevronBackOutline,
@@ -38,6 +51,10 @@ export class ShellComponent implements OnInit {
   };
 
   menu: MenuItem[] = [
+=======
+  menu: MenuItem[] = [
+   /* { label: 'Inicio',      route: '/app/home' },*/
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
     { label: 'Productos',   route: '/app/products' },
     { label: 'Tiendas',     route: '/app/locations' },
     { label: 'Perfil',      route: '/app/profile' },
@@ -48,6 +65,7 @@ export class ShellComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private nav: NavController,
+<<<<<<< HEAD
     private toast: ToastController,
     private menuCtrl: MenuController,
   ) {}
@@ -62,6 +80,22 @@ export class ShellComponent implements OnInit {
       if (!this.isDesktop) this.isPinned = false;
     });
 
+=======
+    private toast: ToastController
+  ) {}
+
+  async ngOnInit() {
+    // 1) media query manual y reactivo
+    this.mq = window.matchMedia('(min-width: 992px)');
+    this.isDesktop = this.mq.matches;
+    // Nota: addEventListener está soportado en navegadores modernos
+    this.mq.addEventListener('change', e => {
+      this.isDesktop = e.matches;
+      console.log('[SplitPane] desktop?', this.isDesktop);
+    });
+
+    // 2) datos de usuario
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
     await this.refreshUser();
   }
 
@@ -71,12 +105,15 @@ export class ShellComponent implements OnInit {
     this.displayName = (this.user?.name || '').split(' ')[0] || '';
   }
 
+<<<<<<< HEAD
   togglePin() {
     this.isPinned = !this.isPinned;
     // si lo pasamos a overlay, ciérralo por si estaba abierto
     if (!this.isPinned) this.menuCtrl.close();
   }
 
+=======
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
   async onLogout() {
     await this.auth.logout();
     (await this.toast.create({

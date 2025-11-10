@@ -1,14 +1,24 @@
+<<<<<<< HEAD
 <ion-split-pane contentId="main" [when]="isDesktop && isPinned">
+=======
+<ion-split-pane contentId="main" [when]="isDesktop">
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
   <!-- MENÚ LATERAL -->
   <ion-menu
     side="start"
     contentId="main"
+<<<<<<< HEAD
     [type]="(isDesktop && isPinned) ? 'reveal' : 'overlay'"
     [swipeGesture]="!isDesktop || !isPinned">
+=======
+    type="overlay"
+    [swipeGesture]="!isDesktop">
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
 
     <ion-header class="menu-header">
       <ion-toolbar>
         <ion-title>Menú</ion-title>
+<<<<<<< HEAD
 
         <!-- Desktop: colapsar/fijar -->
         <ion-buttons slot="end" *ngIf="isDesktop">
@@ -23,6 +33,11 @@
             <ion-button fill="clear" aria-label="Cerrar">
               <ion-icon [icon]="icons.close"></ion-icon>
             </ion-button>
+=======
+        <ion-buttons slot="end">
+          <ion-menu-toggle autoHide="false">
+            <ion-button fill="clear" aria-label="Cerrar">✕</ion-button>
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
           </ion-menu-toggle>
         </ion-buttons>
       </ion-toolbar>
@@ -41,12 +56,17 @@
     <ion-content>
       <ion-list lines="none" class="menu-list">
 
+<<<<<<< HEAD
+=======
+        <!-- Inicio -->
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
         <ion-menu-toggle autoHide="false">
           <ion-item routerDirection="root" [routerLink]="['/app/home']" detail="false">
             <ion-label>Inicio</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
+<<<<<<< HEAD
         <!-- Categorías desplegable -->
         <ion-accordion-group class="menu-acc">
           <ion-accordion value="prod">
@@ -86,10 +106,73 @@
         <!-- Resto de items -->
         <ion-menu-toggle autoHide="false" *ngFor="let it of menu">
           <ion-item [routerLink]="it.route" routerDirection="root" detail="false">
+=======
+<!-- Productos (desplegable) -->
+<ion-accordion-group class="menu-acc">
+  <ion-accordion value="prod">
+    <ion-item slot="header" detail="false">
+      <ion-label>Categorias</ion-label>
+    </ion-item>
+    <div slot="content">
+
+      <ion-menu-toggle autoHide="true">
+        <ion-item routerDirection="root"
+                  [routerLink]="['/app/products/section']"
+                  [queryParams]="{ cat: 'ropa' }">
+          <ion-label>Ropa</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle autoHide="true">
+        <ion-item routerDirection="root"
+                  [routerLink]="['/app/products/section']"
+                  [queryParams]="{ cat: 'accesorios' }">
+          <ion-label>Accesorios</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle autoHide="true">
+        <ion-item routerDirection="root"
+                  [routerLink]="['/app/products/section']"
+                  [queryParams]="{ cat: 'instrumentos' }">
+          <ion-label>Instrumentos</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle autoHide="true">
+        <ion-item routerDirection="root"
+                  [routerLink]="['/app/products/section']"
+                  [queryParams]="{ cat: 'posters' }">
+          <ion-label>Posters</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle autoHide="true">
+        <ion-item routerDirection="root"
+                  [routerLink]="['/app/products/section']"
+                  [queryParams]="{ cat: 'vinilos' }">
+          <ion-label>Vinilos</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </div>
+  </ion-accordion>
+</ion-accordion-group>
+
+
+        <!-- Resto de items del menú (sin "Productos" para evitar duplicado) -->
+        <ion-menu-toggle autoHide="false" *ngFor="let it of menu">
+          <ion-item [routerLink]="it.route" routerDirection="root" detail="false">
+            <ion-icon *ngIf="it.icon" slot="start" [name]="it.icon"></ion-icon>
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
             <ion-label>{{ it.label }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
+<<<<<<< HEAD
+=======
+        <!-- Cerrar sesión -->
+>>>>>>> d3e00715681a8e4ac5207dc95788a6c450c63e4d
         <ion-item button class="logout" (click)="onLogout()">
           <ion-label><strong>Cerrar Sesión</strong></ion-label>
         </ion-item>
